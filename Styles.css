@@ -1,0 +1,38 @@
+  *{
+            margin:0;
+            padding:0;
+            text-decoration:none;
+            box-sizing:border-box;
+        }
+
+        /* Navbar styles */
+        .navbar{
+            background:rgb(46, 175, 226);
+            padding: 15px;
+        }
+
+        .navbar div{
+            display:flex;
+            justify-content: space-between;
+            align-items:center;
+        }
+
+        .logo{
+            color:white;
+            font-size:25px;
+            font-weight:bold;
+        }
+
+        ul{
+            list-style:none;
+        }
+
+        li{
+            display:inline-block;
+        }
+
+        li a{
+            color:white;
+            margin-right:20px;
+            font-weight:bold;
+        }
