@@ -1,38 +1,112 @@
-  *{
-            margin:0;
-            padding:0;
-            text-decoration:none;
-            box-sizing:border-box;
-        }
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
 
-        /* Navbar styles */
-        .navbar{
-            background:rgb(46, 175, 226);
-            padding: 15px;
-        }
+/* Navbar styles */
+.navbar {
+    background: rgb(46, 175, 226);
+    padding: 15px;
+}
 
-        .navbar div{
-            display:flex;
-            justify-content: space-between;
-            align-items:center;
-        }
+.navbar div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
 
-        .logo{
-            color:white;
-            font-size:25px;
-            font-weight:bold;
-        }
+ul {
+    list-style: none;
+}
 
-        ul{
-            list-style:none;
-        }
+li {
+    display: inline-block;
+}
 
-        li{
-            display:inline-block;
-        }
+li a {
+    color: white;
+    margin-right: 20px;
+    font-weight: bold;
+}
 
-        li a{
-            color:white;
-            margin-right:20px;
-            font-weight:bold;
-        }
+/* Headings and paragraphs */
+h1 {
+    margin: 20px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #000;
+}
+
+/* Buttons */
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    margin-right: 5px;
+}
+
+.details {
+    background-color:rgb(46, 175, 226 );
+}
+
+.edit {
+    background-color: orange;
+}
+
+.delete {
+    background-color: red;
+}
+
+/* Action buttons container */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* Forms */
+form {
+    margin: 20px 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"] {
+    padding: 5px;
+    margin: 5px 0 15px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Radio buttons */
+input[type="radio"] {
+    margin-right: 5px;
+}
+body{
+    background-color:whitesmoke;
+}

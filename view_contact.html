@@ -3,179 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee managent app | view contact</title>
-</head>
-<style>
-        *{
-            margin:0;
-            padding:0;
-            text-decoration:none;
-            box-sizing:border-box;
-        }
-
-        /* Navbar styles */
-        .navbar{
-            background:rgb(46, 175, 226);
-            padding: 15px;
-        }
-
-        .navbar div{
-            display:flex;
-            justify-content: space-between;
-            align-items:center;
-        }
-
-        .logo{
-            color:white;
-            font-size:25px;
-            font-weight:bold;
-        }
-
-        ul{
-            list-style:none;
-        }
-
-        li{
-            display:inline-block;
-        }
-
-        li a{
-            color:white;
-            margin-right:20px;
-            font-weight:bold;
-        }
-        .btn{
-    padding:5px 10px;
-    border: none;
-    border-radius:5px;
-    margin-right:5px;
-    cursor:pointer;
-    color:white;
-}
-
-.details{
-    background-color:blue;
-}
-
-.edit{
-    background-color:orange;
-}
-
-.delete{
-    background-color:red;
-}
-.action-buttons{
-    display:flex;
-    gap:5px;
-}
-    </style>
+    <title>Moxela App | View Contacts</title>
+    <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
-    <div>
-        <div class="logo">Moxela App</div>
+        <div>
+            <div class="logo">Moxela App</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="new_contact.html">New Contact</a></li>
+                <li><a href="view_contact.html">View Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="new_contact.html">New Contact</a></li>
-            <li><a href="view_contact.html">View Contact</a></li>
-        </ul>
-    </div>
-</nav>
-    <h1>View all contacts </h1>
-    <ul>
-    <li><a href="index.html">home</a></li>
-    <li><a href="new_contact.html">new contact</a></li>
-    <li><a href="view_contact.html">view contact</a></li>
-</ul>
-        <table border="0" cellspacing="35" cellpadding="10"  border-bottom="1px solid black">
-         <tr>
-            <th>No</th> 
-            <th>Name</th>
-            <th>Phone number</th>
-            <th>Email</th>
-            <th>Tools</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Simon Ndungu</td>
-            <td>
-                <label for="phone"></label>
-                    <input type="text" id="phone" name="phone" placeholder="+2547---" required><br><br>
-                </td>
-            <td>  
-                <label for="Email"></label>
-                    <input type="email" id="Email" name="Email" placeholder="Enter your Email" required><br><br>
-                </td>
-            <td> 
-                <div class="action-buttons">
-        <button class="btn details" onclick="showDetails(this)">Details</button> 
-        <button class="btn edit" onclick="editRow(this)">Edit</button>
-        <button class="btn delete" onclick="deleteRow(this)">Delete</button>
-                 </div>
-                </td>
-        </tr>
+    <h1>View Contacts</h1>
 
-        <tr>
-            <td>2</td>
-            <td>Jane Sifuna</td>
-            <td>
-                <label for="phone"></label>
-                <input type="text" id="phone" name="phone" placeholder="+2547---" required><br><br>
-                </td>
-            <td>
-                  <label for="Email"></label>
-                    <input type="email" id="Email" name="Email" placeholder="Enter your Email" required><br><br>
-            </td>
-            <td> 
-          <div class="action-buttons">
-        <button class="btn details" onclick="showDetails(this)">Details</button> 
-        <button class="btn edit" onclick="editRow(this)">Edit</button>
-        <button class="btn delete" onclick="deleteRow(this)">Delete</button>
-                 </div>
-                </td>
-        </tr>
-
+    <!-- Contacts Table -->
+    <table id="contactsTable">
+        <thead>
             <tr>
-                <td>3</td>
-                <td>Ann Mwatha</td>
-                <td>
-                    <label for="phone"></label>
-                    <input type="text" id="phone" name="phone" placeholder="+2547---" required><br><br>
-                </td>
-                <td>
-                    <label for="Email"></label>
-                    <input type="email" id="Email" name="Email" placeholder="Enter your Email" required><br><br>
-                </td>
-                <td>
-                 <div class="action-buttons">
-        <button class="btn details" onclick="showDetails(this)">Details</button> 
-        <button class="btn edit" onclick="editRow(this)">Edit</button>
-        <button class="btn delete" onclick="deleteRow(this)">Delete</button>
-                 </div>
-                </td>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Date of Birth</th>
+                <th>Position</th>
+                <th>Actions</th>
             </tr>
-    
-        <tr>
-            <td>4</td>
-            <td>Emily Nyaboke</td>
-            <td>
-                    <label for="Phone"></label>
-                    <input type="text" id="Phone" name="phone" placeholder="+2547--" required><br><br>
-            </td>
-            <td>
-                    <label for="Email"></label>
-                    <input type="email" id="Email" name="Email" placeholder="Enter your Email" required><br><br>
-            </td>
+        </thead>
+        <tbody>
+            <!-- Contacts will be loaded here from localStorage -->
+        </tbody>
+    </table>
 
-             <td>
-                  <div class="action-buttons">
-        <button class="btn details" onclick="showDetails(this)">Details</button> 
-        <button class="btn edit" onclick="editRow(this)">Edit</button>
-        <button class="btn delete" onclick="deleteRow(this)">Delete</button>
-                 </div>
-               
-                </td>
-        </tr>
-
-
+    <!-- Link JS -->
+    <script src="main.js"></script>
+</body>
+</html>

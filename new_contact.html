@@ -3,111 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee managent app | new contact</title>   
+    <title>Moxela App | New Contact</title>
+    <link rel="stylesheet" href="Styles.css">
 </head>
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            text-decoration:none;
-            box-sizing:border-box;
-        }
+<body>
+    <nav class="navbar">
+        <div>
+            <div class="logo">Moxela App</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="new_contact.html">New Contact</a></li>
+                <li><a href="view_contact.html">View Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        /* Navbar styles */
-        .navbar{
-            background:rgb(46, 175, 226);
-            padding: 15px;
-        }
+    <h1>New Contact</h1>
 
-        .navbar div{
-            display:flex;
-            justify-content: space-between;
-            align-items:center;
-        }
+    <form id="contactForm">
+        <label for="idNumber">ID Number:</label>
+        <input type="text" id="idNumber" placeholder="Enter your ID Number" required>
 
-        .logo{
-            color:white;
-            font-size:25px;
-            font-weight:bold;
-        }
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" placeholder="Enter your First Name" required>
 
-        ul{
-            list-style:none;
-        }
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" placeholder="Enter your Last Name" required>
 
-        li{
-            display:inline-block;
-        }
+        <p>Gender:</p>
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female" required> Female</label>
 
-        li a{
-            color:white;
-            margin-right:20px;
-            font-weight:bold;
-        }
-    .btn{
-    padding:5px 10px;
-    border: none;
-    border-radius:5px;
-    margin-right:5px;
-}
-.details
-{
-    background-color:rgb(46, 175, 226);
-}
-    </style>
-<body><nav class="navbar">
-    <div>
-        <div class="logo">Moxela App</div>
+        <label for="address">Address:</label>
+        <input type="text" id="address" placeholder="Enter your Address" required>
 
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="new_contact.html">New Contact</a></li>
-            <li><a href="view_contact.html">View Contact</a></li>
-        </ul>
-    </div>
-</nav>
-    <h1>New contact</h1>
-    <ul>
-    <li><a href="index.html">home</a></li>
-    <li><a href="new_contact.html">new contact</a></li>
-    <li><a href="view_contact.html">view contact</a></li>
-</ul>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required>
 
-    <p><b>Add new contacts</b></p><br><br>
-<form>
-    
+        <label for="position">Position:</label>
+        <input type="text" id="position" placeholder="Enter position if official" required>
 
-    <label for="idNumber">ID Number:</label>
-    <input type="text" id="idNumber" name="idNumber" placeholder="Enter your ID Number" required><br><br>
+        <button type="submit" class="btn details">Submit</button>
+    </form>
 
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" placeholder="Enter your First Name" required><br><br>
-
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" placeholder="Enter your Last Name" required><br><br>
-   <p>GENDER:
-    <label>
-    <input type="radio" name="gender" value="Male"> Male
-</label>
-
-<label>
-    <input type="radio" name="gender" value="Female"> Female
-</label><br><br>
-`
-
-<label for="Address">Address:</label>
-<input type="text" id="Address" name="Address" placeholder="Enter your Address" required><br><br>
-
-<label for="Date of birth">Date of birth:</label>
-<input type="text" id="Date of birth" name="Date of birth" placeholder="mm/dd/yyyy" required><br><br>
-
-<label for="Position">Position:</label>
-<input type="text" id="Position" name="Position" placeholder="Select position if official" required><br><br>
- </p>
- 
-<button class="btn details">Submit</button>
- 
-</form>
-
+    <script src="new_contact.js"></script>
 </body>
 </html>
