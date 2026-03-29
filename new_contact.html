@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
         <div>
             <div class="logo">Moxela App</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="new_contact.html">New Contact</a></li>
-                <li><a href="view_contact.html">View Contact</a></li>
+                <li><a href="new_contact.html" class="active">New Contact</a></li>
+                <li><a href="view_contact.html">View Contacts</a></li>
             </ul>
         </div>
     </nav>
@@ -33,7 +34,8 @@
         <p>Gender:</p>
         <label><input type="radio" name="gender" value="Male" required> Male</label>
         <label><input type="radio" name="gender" value="Female" required> Female</label>
-<br><br>
+        <br><br>
+
         <label for="address">Address:</label>
         <input type="text" id="address" placeholder="Enter your Address" required>
 
@@ -46,6 +48,7 @@
         <button type="submit" class="btn details">Submit</button>
     </form>
 
-    <script src="new_contact.js"></script>
+    <!-- Link main.js -->
+    <script src="main.js"></script>
 </body>
 </html>

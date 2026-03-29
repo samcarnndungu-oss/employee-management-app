@@ -1,14 +1,10 @@
-// ==============================
-// NEW CONTACT PAGE LOGIC
-// ==============================
+// ===== NEW CONTACT PAGE LOGIC =====
 const contactForm = document.getElementById('contactForm');
-
-// Minimum DOB allowed: 18+ (born on or before 01/01/2007)
-const minDOB = new Date('2007-01-01');
+const minDOB = new Date('2007-01-01'); // must be 18+
 
 if(contactForm){
     contactForm.addEventListener('submit', function(e){
-        e.preventDefault(); // prevent form submission
+        e.preventDefault();
 
         const idNumber = document.getElementById('idNumber').value.trim();
         const firstName = document.getElementById('firstName').value.trim();
@@ -34,43 +30,50 @@ if(contactForm){
             fullName: `${firstName} ${lastName}`,
             gender,
             address,
-            dob: dob.toISOString().split('T')[0], // YYYY-MM-DD
+            dob: dob.toISOString().split('T')[0],
             position
         };
 
-        // Save contact to localStorage
+        // Save to localStorage
         const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
         contacts.push(contact);
         localStorage.setItem('contacts', JSON.stringify(contacts));
 
         alert('Contact added successfully!');
         contactForm.reset();
+
+        // 🔥 Redirect to view contacts page
+        window.location.href = 'view_contact.html';
+    });
+
+    // ID field: only numbers
+    const idInput = document.getElementById('idNumber');
+    idInput.addEventListener('input', () => {
+        idInput.value = idInput.value.replace(/\D/g,'');
     });
 }
 
-// ==============================
-// VIEW CONTACTS PAGE LOGIC
-// ==============================
+// ===== VIEW CONTACTS PAGE LOGIC =====
 const contactsTableBody = document.querySelector('#contactsTable tbody');
 
 function loadContacts(){
-    if(!contactsTableBody) return;
+    if(!contactsTableBody) return; // only run if on view_contact.html
 
-    contactsTableBody.innerHTML = '';
     const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+    contactsTableBody.innerHTML = '';
 
-    contacts.forEach((contact, index) => {
+    contacts.forEach((c, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${contact.idNumber}</td>
-            <td>${contact.fullName}</td>
-            <td>${contact.gender}</td>
-            <td>${contact.address}</td>
-            <td>${contact.dob}</td>
-            <td>${contact.position}</td>
+            <td>${c.idNumber}</td>
+            <td>${c.fullName}</td>
+            <td>${c.gender}</td>
+            <td>${c.address}</td>
+            <td>${c.dob}</td>
+            <td>${c.position}</td>
             <td>
-                <button onclick="editRow(${index})">Edit</button>
-                <button onclick="deleteRow(${index})">Delete</button>
+                <button onclick="editContact(${index})">Edit</button>
+                <button onclick="deleteContact(${index})">Delete</button>
                 <button onclick="showDetails(${index})">Details</button>
             </td>
         `;
@@ -78,66 +81,61 @@ function loadContacts(){
     });
 }
 
+// Run only if on view_contact.html
 loadContacts();
 
-// ==============================
 // DELETE CONTACT
-// ==============================
-function deleteRow(index){
+function deleteContact(index){
     if(confirm("Are you sure you want to delete this contact?")){
         const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
-        contacts.splice(index, 1);
+        contacts.splice(index,1);
         localStorage.setItem('contacts', JSON.stringify(contacts));
         loadContacts();
     }
 }
 
-// ==============================
 // SHOW DETAILS
-// ==============================
 function showDetails(index){
     const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
-    const contact = contacts[index];
+    const c = contacts[index];
     alert(
-        `ID: ${contact.idNumber}\n` +
-        `Name: ${contact.fullName}\n` +
-        `Gender: ${contact.gender}\n` +
-        `Address: ${contact.address}\n` +
-        `Date of Birth: ${contact.dob}\n` +
-        `Position: ${contact.position}`
+        `ID: ${c.idNumber}\n`+
+        `Name: ${c.fullName}\n`+
+        `Gender: ${c.gender}\n`+
+        `Address: ${c.address}\n`+
+        `Date of Birth: ${c.dob}\n`+
+        `Position: ${c.position}`
     );
 }
 
-// ==============================
 // EDIT CONTACT
-// ==============================
-function editRow(index){
+function editContact(index){
     const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
-    const contact = contacts[index];
+    const c = contacts[index];
 
-    const newName = prompt('Enter new full name:', contact.fullName);
-    if(newName) contact.fullName = newName;
+    const newName = prompt('Enter new full name:', c.fullName);
+    if(newName) c.fullName = newName;
 
-    const newGender = prompt('Enter new gender (Male/Female):', contact.gender);
-    if(newGender) contact.gender = newGender;
+    const newGender = prompt('Enter new gender (Male/Female):', c.gender);
+    if(newGender) c.gender = newGender;
 
-    const newAddress = prompt('Enter new address:', contact.address);
-    if(newAddress) contact.address = newAddress;
+    const newAddress = prompt('Enter new address:', c.address);
+    if(newAddress) c.address = newAddress;
 
-    const newDOB = prompt('Enter new Date of Birth (YYYY-MM-DD):', contact.dob);
+    const newDOB = prompt('Enter new Date of Birth (YYYY-MM-DD):', c.dob);
     if(newDOB){
         const dobDate = new Date(newDOB);
         if(dobDate > minDOB){
             alert("User must be at least 18 years old!");
         } else {
-            contact.dob = newDOB;
+            c.dob = newDOB;
         }
     }
 
-    const newPosition = prompt('Enter new position:', contact.position);
-    if(newPosition) contact.position = newPosition;
+    const newPosition = prompt('Enter new position:', c.position);
+    if(newPosition) c.position = newPosition;
 
-    contacts[index] = contact;
+    contacts[index] = c;
     localStorage.setItem('contacts', JSON.stringify(contacts));
     loadContacts();
 }
