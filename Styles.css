@@ -1,4 +1,43 @@
-/* ===================== Reset Default Styles ===================== */
+/* ===================== Table Action Buttons ===================== */
+.edit {
+    background-color: #f1c40f; /* yellow */
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.edit:hover {
+    background-color: #d4ac0d;
+}
+
+.delete {
+    background-color: #e74c3c; /* red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: #c0392b;
+}
+
+.details {
+    background-color: #3498db; /* blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.details:hover {
+    background-color: #2980b9;
+}
+* ===================== Reset Default Styles ===================== */
 * {
     margin: 0;
     padding: 0;
@@ -73,18 +112,18 @@ p {
     background-image: url('https://images.pexels.com/photos/3183171/pexels-photo-3183171.jpeg?auto=compress&cs=tinysrgb&w=1600');
     background-size: cover;
     background-position: center;
-    padding: 100px 20px;
+    padding: 150px 20px;
     text-align: center;
-    color: #fff;
+    color:black;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 54px;
     margin-bottom: 15px;
 }
 
 .hero p {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 25px;
 }
 
@@ -153,16 +192,44 @@ tr:hover {
     font-size: 14px;
 }
 
-.details {
-    background-color: rgb(46, 175, 226);
+/* ===================== Table Action Buttons (Updated) ===================== */
+.edit {
+    background-color: #f1c40f; /* yellow */
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
-.edit {
-    background-color: orange;
+.edit:hover {
+    background-color: #d4ac0d;
 }
 
 .delete {
-    background-color: red;
+    background-color: #e74c3c; /* red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: #c0392b;
+}
+
+.details {
+    background-color: #3498db; /* blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.details:hover {
+    background-color: #2980b9;
 }
 
 /* Action buttons container */
@@ -216,7 +283,7 @@ form button.details:hover {
 /* ===================== Footer ===================== */
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 8px;
     margin-top: 40px;
     background: rgb(46, 175, 226);
     color: #fff;

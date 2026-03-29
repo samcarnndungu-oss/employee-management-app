@@ -1,63 +1,9 @@
-// ===== NEW CONTACT PAGE LOGIC =====
-const contactForm = document.getElementById('contactForm');
-const minDOB = new Date('2007-01-01'); // must be 18+
-
-if(contactForm){
-    contactForm.addEventListener('submit', function(e){
-        e.preventDefault();
-
-        const idNumber = document.getElementById('idNumber').value.trim();
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        const gender = document.querySelector('input[name="gender"]:checked')?.value;
-        const address = document.getElementById('address').value.trim();
-        const dobInput = document.getElementById('dob').value;
-        const position = document.getElementById('position').value.trim();
-
-        if(!dobInput){
-            alert('Please enter your date of birth.');
-            return;
-        }
-
-        const dob = new Date(dobInput);
-        if(dob > minDOB){
-            alert('Sorry! You must be at least 18 years old to register.');
-            return;
-        }
-
-        const contact = {
-            idNumber,
-            fullName: `${firstName} ${lastName}`,
-            gender,
-            address,
-            dob: dob.toISOString().split('T')[0],
-            position
-        };
-
-        // Save to localStorage
-        const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
-        contacts.push(contact);
-        localStorage.setItem('contacts', JSON.stringify(contacts));
-
-        alert('Contact added successfully!');
-        contactForm.reset();
-
-        // 🔥 Redirect to view contacts page
-        window.location.href = 'view_contact.html';
-    });
-
-    // ID field: only numbers
-    const idInput = document.getElementById('idNumber');
-    idInput.addEventListener('input', () => {
-        idInput.value = idInput.value.replace(/\D/g,'');
-    });
-}
-
-// ===== VIEW CONTACTS PAGE LOGIC =====
+// VIEW CONTACTS PAGE LOGIC (LIVE UPDATE)
 const contactsTableBody = document.querySelector('#contactsTable tbody');
 
+// Function to load contacts into the table
 function loadContacts(){
-    if(!contactsTableBody) return; // only run if on view_contact.html
+    if(!contactsTableBody) return;
 
     const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
     contactsTableBody.innerHTML = '';
@@ -72,17 +18,24 @@ function loadContacts(){
             <td>${c.dob}</td>
             <td>${c.position}</td>
             <td>
-                <button onclick="editContact(${index})">Edit</button>
-                <button onclick="deleteContact(${index})">Delete</button>
-                <button onclick="showDetails(${index})">Details</button>
+                <button class="edit" onclick="editContact(${index})">Edit</button>
+                <button class="delete" onclick="deleteContact(${index})">Delete</button>
+                <button class="details" onclick="showDetails(${index})">Details</button>
             </td>
         `;
         contactsTableBody.appendChild(row);
     });
 }
 
-// Run only if on view_contact.html
+// Initial load
 loadContacts();
+
+// Listen for localStorage changes (live update if contacts are added from another tab/page)
+window.addEventListener('storage', function(e){
+    if(e.key === 'contacts'){
+        loadContacts();
+    }
+});
 
 // DELETE CONTACT
 function deleteContact(index){
@@ -125,6 +78,7 @@ function editContact(index){
     const newDOB = prompt('Enter new Date of Birth (YYYY-MM-DD):', c.dob);
     if(newDOB){
         const dobDate = new Date(newDOB);
+        const minDOB = new Date('2007-01-01');
         if(dobDate > minDOB){
             alert("User must be at least 18 years old!");
         } else {
